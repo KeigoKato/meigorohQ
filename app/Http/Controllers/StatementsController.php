@@ -14,9 +14,8 @@ class StatementsController extends Controller
      * @return statements/indexビュー
      */
     public function index(Request $request) {
-        // $items = Statement::all();
-        // $params    = ['items' => $items];
-        // return view('statements.index', $params);
-        return view('statements.index');
+        $items = Statement::all();
+        $params    = ['items' => $items];
+        return view('statements.index', $params);
     }
 }
