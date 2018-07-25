@@ -12,11 +12,11 @@
             <th>who</th>
             <th>statement</th>
         </tr>
-        @foreach($params as $param)
+        @foreach($items as $item)
         <tr>
-            <td>{{$param->title}}</td>
-            <td>{{$param->who}}</td>
-            <td>{{$param->statement}}</td>
+            <td>{{$item->title}}</td>
+            <td>{{$item->who}}</td>
+            <td>{{$item->statement}}</td>
         </tr>
         @endforeach
     </table>
