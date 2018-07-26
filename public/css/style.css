@@ -1,0 +1,19 @@
+.navbar {
+    margin-bottom: 80px;
+}
+.sidebar {
+font-weight: bold;
+}
+.sidebar li {
+margin: 15px 0;
+}
+.sidebar li a{
+color: black;
+}
+p.price {
+font-size: 18px;
+margin-bottom: 0;
+}
+.thumbnail {
+min-height: 270px;
+}
