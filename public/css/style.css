@@ -17,3 +17,7 @@ margin-bottom: 0;
 .thumbnail {
 min-height: 270px;
 }
+
+.text-center {
+    text-align: center;
+}
