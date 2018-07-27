@@ -5,12 +5,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="jumbotron">
+            <div class="jumbotron" style="padding: 48px 110px;">
                 <h2 style="margin-bottom: 60px;">
-                    焦るんじゃない、俺は腹が減っているだけなんだ
+                    {{$item->statement}}
                 </h2>
                 <p style="text-align: right;">
-                    孤独のグルメ : 井之頭五郎
+                    {{$item->title}} : {{$item->who}}
                 </p>
                 <p>
                     <a href="#" class="btn btn-primary btn-lg" role="button">Learn more</a>

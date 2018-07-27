@@ -34,8 +34,16 @@ class StatementsController extends Controller
         return view('statements.search', ['results'=>$results, 'keyword'=>$keyword]);
     }
 
+    /**
+     * Statementモデルのshowアクション
+     *
+     * @param Request $request
+     * @return Statements/showビュー
+     */
     public function show(Request $request) {
         $id = $request->id;
-        return view('statements.show');
+        $item = Statement::find($id);
+        \Debugbar::info($item);
+        return view('statements.show', ['item' => $item]);
     }
 }

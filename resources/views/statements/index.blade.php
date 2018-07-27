@@ -28,7 +28,11 @@
                             <th scope="row" class="text-center">{{$loop->index + 1}}</th>
                             <td class="text-center">{{$item->title}}</td>
                             <td class="text-center">{{$item->who}}</td>
-                            <td>{{$item->statement}}</td>
+                            <td>
+                                <a href="statements/show?id={{$item->id}}" style="text-decoration: none">
+                                    {{$item->statement}}
+                                </a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
