@@ -33,4 +33,9 @@ class StatementsController extends Controller
         ->get();
         return view('statements.search', ['results'=>$results, 'keyword'=>$keyword]);
     }
+
+    public function show(Request $request) {
+        $id = $request->id;
+        return view('statements.show');
+    }
 }
