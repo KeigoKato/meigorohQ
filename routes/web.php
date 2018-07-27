@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('statements/index', 'StatementsController@index');
+Route::get('statements/search', 'StatementsController@search');
