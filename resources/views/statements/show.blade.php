@@ -11,15 +11,31 @@
                 </h2>
                 <p style="text-align: right;">
                     {{$item->title}} : {{$item->who}}
-                    @foreach($item->reviews as $review)
-                    <p>
-                        {{$review->comment}}
-                    </p>
-                    @endforeach
                 </p>
                 <p>
                     <a href="#" class="btn btn-primary btn-lg" role="button">Learn more</a>
                 </p>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Panel heading</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>レビュワー</th>
+                            <th>スター</th>
+                            <th>コメント</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($item->reviews as $review)
+                        <tr>
+                            <td>名無し</td>
+                            <td>{{$review->star}}</td>
+                            <td>{{$review->comment}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
