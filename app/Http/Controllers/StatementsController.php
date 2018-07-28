@@ -43,7 +43,21 @@ class StatementsController extends Controller
     public function show(Request $request) {
         $id = $request->id;
         $item = Statement::find($id);
-        \Debugbar::info($item);
         return view('statements.show', ['item' => $item]);
     }
+
+    public function add() {
+        return view('statements.add');
+    }
+
+    public function create(Request $request) {
+        $input = new Statement;
+        \Debugbar::info($input);
+        $form = $request->all();
+        \Debugbar::info($form);
+        unset($form["_token"]);
+        $input->fill($form)->save();
+        return redirect('/');
+    }
+
 }
