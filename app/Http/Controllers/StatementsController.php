@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Statement;
+use App\Review;
 
 class StatementsController extends Controller
 {
@@ -45,10 +46,21 @@ class StatementsController extends Controller
         return view('statements.show', ['item' => $item]);
     }
 
+    /**
+     * Statementモデルのaddアクション
+     *
+     * @return void
+     */
     public function add() {
         return view('statements.add');
     }
 
+    /**
+     * Statementモデルのcreateアクション
+     *
+     * @param Request $request
+     * @return void
+     */
     public function create(Request $request) {
         $input = new Statement;
         $form = $request->all();

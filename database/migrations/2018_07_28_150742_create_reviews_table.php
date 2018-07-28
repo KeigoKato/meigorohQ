@@ -18,9 +18,10 @@ class CreateReviewsTable extends Migration
             $table->integer('star');
             $table->string('comment');
             // $table->integer('user_id');
-            $table->unsignedInteger('statement_id');
+            // $table->unsignedInteger('statement_id');
+            $table->integer('statement_id');
             // $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('statement_id')->references('id')->on('statements');
+            // $table->foreign('statement_id')->references('id')->on('statements');
             $table->timestamps();
         });
     }

@@ -11,6 +11,11 @@
                 </h2>
                 <p style="text-align: right;">
                     {{$item->title}} : {{$item->who}}
+                    @foreach($item->reviews as $review)
+                    <p>
+                        {{$review->comment}}
+                    </p>
+                    @endforeach
                 </p>
                 <p>
                     <a href="#" class="btn btn-primary btn-lg" role="button">Learn more</a>
