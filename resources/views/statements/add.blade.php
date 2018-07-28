@@ -31,9 +31,6 @@
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <button type="reset" onclick="location.href='/statements/index'" class="btn btn-default">キャンセル</button>
-<<<<<<< HEAD
-                            <button type="submit" onclick="location.href='statements/create'" class="btn btn-primary">投稿</button>
-=======
                             <!-- <button type="submit" onclick="location.href='statements/create'" class="btn btn-primary">投稿</button> -->
 
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">投稿する</button>
@@ -60,7 +57,6 @@
                                 </div>
                             </div>
 
->>>>>>> f/008
                         </div>
                     </div>
                 </fieldset>
