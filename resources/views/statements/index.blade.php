@@ -29,7 +29,7 @@
                             <td class="text-center">{{$item->title}}</td>
                             <td class="text-center">{{$item->who}}</td>
                             <td>
-                                <a href="statements/show?id={{$item->id}}" style="text-decoration: none">
+                                <a href="/statements/show?id={{$item->id}}" style="text-decoration: none">
                                     {{$item->statement}}
                                 </a>
                             </td>
