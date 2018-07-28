@@ -15,8 +15,7 @@ class StatementsController extends Controller
      */
     public function index(Request $request) {
         $items = Statement::all();
-        $params    = ['items' => $items];
-        return view('statements.index', $params);
+        return view('statements.index', ['items' => $items]);
     }
 
     /**
@@ -52,12 +51,10 @@ class StatementsController extends Controller
 
     public function create(Request $request) {
         $input = new Statement;
-        \Debugbar::info($input);
         $form = $request->all();
-        \Debugbar::info($form);
         unset($form["_token"]);
         $input->fill($form)->save();
-        return redirect('/');
+        return redirect('/statements/index');
     }
 
 }

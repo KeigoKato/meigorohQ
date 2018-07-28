@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button type="reset" onclick="location.href='/'" class="btn btn-default">キャンセル</button>
+                            <button type="reset" onclick="location.href='/statements/index'" class="btn btn-default">キャンセル</button>
                             <button type="submit" onclick="location.href='statements/create'" class="btn btn-primary">投稿</button>
                         </div>
                     </div>
