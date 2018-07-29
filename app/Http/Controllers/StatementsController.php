@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Statement;
+use App\Review;
 
 class StatementsController extends Controller
 {
@@ -42,13 +43,28 @@ class StatementsController extends Controller
     public function show(Request $request) {
         $id = $request->id;
         $item = Statement::find($id);
-        return view('statements.show', ['item' => $item]);
+        $reviews = $item->reviews;
+        $num_star = $reviews->sum('star');
+        $num_comment = count($reviews);
+        $params = ['item' => $item, 'num_star' => $num_star, 'num_comment' => $num_comment];
+        return view('statements.show', $params);
     }
 
+    /**
+     * Statementモデルのaddアクション
+     *
+     * @return void
+     */
     public function add() {
         return view('statements.add');
     }
 
+    /**
+     * Statementモデルのcreateアクション
+     *
+     * @param Request $request
+     * @return void
+     */
     public function create(Request $request) {
         $input = new Statement;
         $form = $request->all();
@@ -56,5 +72,4 @@ class StatementsController extends Controller
         $input->fill($form)->save();
         return redirect('/statements/index');
     }
-
 }

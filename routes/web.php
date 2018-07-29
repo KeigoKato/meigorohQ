@@ -1,17 +1,16 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/**
+ * Statementモデルに関するのルーティング
+ */
 Route::get('statements/index', 'StatementsController@index');
 Route::get('statements/search', 'StatementsController@search')->name('search');
 Route::get('statements/show', 'StatementsController@show');
 Route::get('statements/add', 'StatementsController@add');
 Route::post('statements/add', 'StatementsController@create');
+
+/**
+ * Reviewモデルに関するルーティング
+ */
+Route::post('/reviews/add', 'ReviewsController@create');
+Route::post('/reviews/delete', 'ReviewsController@delete');
