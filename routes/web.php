@@ -13,4 +13,5 @@ Route::post('statements/add', 'StatementsController@create');
  * Reviewモデルに関するルーティング
  */
 Route::post('/reviews/add', 'ReviewsController@create');
+Route::post('/reviews/update', 'ReviewsController@update');
 Route::post('/reviews/delete', 'ReviewsController@delete');
