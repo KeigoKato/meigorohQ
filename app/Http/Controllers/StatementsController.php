@@ -43,7 +43,11 @@ class StatementsController extends Controller
     public function show(Request $request) {
         $id = $request->id;
         $item = Statement::find($id);
-        return view('statements.show', ['item' => $item]);
+        $reviews = $item->reviews;
+        $num_star = $reviews->sum('star');
+        $num_comment = count($reviews);
+        $params = ['item' => $item, 'num_star' => $num_star, 'num_comment' => $num_comment];
+        return view('statements.show', $params);
     }
 
     /**
@@ -68,5 +72,4 @@ class StatementsController extends Controller
         $input->fill($form)->save();
         return redirect('/statements/index');
     }
-
 }
