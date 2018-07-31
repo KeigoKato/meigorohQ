@@ -16,16 +16,15 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="text-center">#</th>
-                            <th class="col-md-3 text-center">作品タイトル</th>
-                            <th class="col-md-2 text-center">発言者</th>
-                            <th class="col-md-7 text-center">名語録</th>
+                            <th class="col-md-2 text-center"><a style="text-decoration: none;" href="/statements/index?sort=title">作品タイトル</a></th>
+                            <th class="col-md-1 text-center"><a style="text-decoration: none;" href="/statements/index?sort=who">発言者</a></th>
+                            <th class="col-md-6 text-center"><a style="text-decoration: none;" href="/statements/index?sort=statement">名語録</a></th>
+                            <th class="col-md-3 text-center"><a style="text-decoration: none;" href="/statements/index?sort=created_at">投稿日</a></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($items as $item)
                         <tr>
-                            <th scope="row" class="text-center">{{$loop->index + 1}}</th>
                             <td class="text-center">{{$item->title}}</td>
                             <td class="text-center">{{$item->who}}</td>
                             <td>
@@ -33,14 +32,17 @@
                                     {{$item->statement}}
                                 </a>
                             </td>
+                            <td class="text-center">{{$item->created_at->format('Y年m月d日 H時m分')}}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+            <div class="paginate-links" style="text-align: center;">
+                {{--?page=piyoのクエリパラメータに&sort=hogeが連結される--}}
+                {{ $items->appends(['sort' => $sort])->links() }}
+            </div>
         </div>
     </div>
 </div>
-
-
 @endsection
