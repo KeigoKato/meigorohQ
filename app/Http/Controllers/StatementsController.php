@@ -23,8 +23,18 @@ class StatementsController extends Controller
             // そーとの指定がない場合は投稿した日付で並べる
             $sort = 'created_at';
         }
-        $items = Statement::orderBy($sort, 'asc')->paginate(10);
-        $params = ['items' => $items, 'sort' => $sort];
+        $page_count = 20;
+        $items = Statement::orderBy($sort, 'asc')->paginate($page_count);
+        $total = $items->total();
+        $startCount = ($items->currentPage() - 1) * $page_count + 1;
+        $endCount = $startCount + $items->count() - 1;
+        $params = [
+            'items'      => $items,
+            'sort'       => $sort,
+            'total'      => $total,
+            'startCount' => $startCount,
+            'endCount'   => $endCount,
+        ];
         return view('statements.index', $params);
     }
 
@@ -35,12 +45,34 @@ class StatementsController extends Controller
      * @return statements/searchビュー
      */
     public function search(Request $request) {
+        if (!empty($request->sort)) {
+            // クエリ文字列が存在する場合
+            //受け取ったクエリをそのまま代入する
+            $sort = $request->sort;
+        } else {
+            // クエリ文字列が存在しない場合
+            // そーとの指定がない場合は投稿した日付で並べる
+            $sort = 'created_at';
+        }
         $keyword = $request->keyword;
-        $results = Statement::where('title', 'like', '%'.$keyword.'%')
+        $page_count = 20;
+        $items = Statement::where('title', 'like', '%'.$keyword.'%')
         ->orWhere('who', 'like', '%'.$keyword.'%')
         ->orWhere('statement', 'like', '%'.$keyword.'%')
-        ->get();
-        return view('statements.search', ['results'=>$results, 'keyword'=>$keyword]);
+        ->orderBy($sort, 'asc')
+        ->paginate(20);
+        $total = $items->total();
+        $startCount = ($items->currentPage() - 1) * $page_count + 1;
+        $endCount = $startCount + $items->count() - 1;
+        $params = [
+            'items'      => $items,
+            'keyword'    => $keyword,
+            'total'      => $total,
+            'sort'       => $sort,
+            'startCount' => $startCount,
+            'endCount'   => $endCount,
+        ];
+        return view('statements.index', $params);
     }
 
     /**

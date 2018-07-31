@@ -23,14 +23,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($results as $result)
+                        @foreach($items as $item)
                         <tr>
                             <th scope="row" class="text-center">{{$loop->index + 1}}</th>
-                            <td class="text-center">{{$result->title}}</td>
-                            <td class="text-center">{{$result->who}}</td>
+                            <td class="text-center">{{$item->title}}</td>
+                            <td class="text-center">{{$item->who}}</td>
                             <td>
-                                <a href="/statements/show?id={{$result->id}}" style="text-decoration: none">
-                                    {{$result->statement}}
+                                <a href="/statements/show?id={{$item->id}}" style="text-decoration: none">
+                                    {{$item->statement}}
                                 </a>
                             </td>
                         </tr>
