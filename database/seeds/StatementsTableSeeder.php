@@ -11,6 +11,6 @@ class StatementsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Statement::class, 50)->create();
+        factory(App\Statement::class, 150)->create();
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Statement;
-use App\Review;
 
 class StatementsController extends Controller
 {
@@ -15,8 +14,18 @@ class StatementsController extends Controller
      * @return statements/indexビュー
      */
     public function index(Request $request) {
-        $items = Statement::all();
-        return view('statements.index', ['items' => $items]);
+        if ($request->query()) {
+            // クエリ文字列が存在する場合
+            //受け取ったクエリをそのまま代入する
+            $sort = $request->sort;
+        } else {
+            // クエリ文字列が存在しない場合
+            // そーとの指定がない場合は投稿した日付で並べる
+            $sort = 'created_at';
+        }
+        $items = Statement::orderBy($sort, 'asc')->paginate(10);
+        $params = ['items' => $items, 'sort' => $sort];
+        return view('statements.index', $params);
     }
 
     /**
