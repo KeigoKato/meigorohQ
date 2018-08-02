@@ -14,15 +14,8 @@ class StatementsController extends Controller
      * @return statements/indexビュー
      */
     public function index(Request $request) {
-        if ($request->query()) {
-            // クエリ文字列が存在する場合
-            //受け取ったクエリをそのまま代入する
-            $sort = $request->sort;
-        } else {
-            // クエリ文字列が存在しない場合
-            // そーとの指定がない場合は投稿した日付で並べる
-            $sort = 'created_at';
-        }
+        $sort = $request->sort;
+        \Debugbar::info($sort);
         $page_count = 20;
         $items = Statement::orderBy($sort, 'asc')->paginate($page_count);
         $total = $items->total();
@@ -45,15 +38,7 @@ class StatementsController extends Controller
      * @return statements/searchビュー
      */
     public function search(Request $request) {
-        if (!empty($request->sort)) {
-            // クエリ文字列が存在する場合
-            //受け取ったクエリをそのまま代入する
-            $sort = $request->sort;
-        } else {
-            // クエリ文字列が存在しない場合
-            // そーとの指定がない場合は投稿した日付で並べる
-            $sort = 'created_at';
-        }
+        $sort = $request->sort;
         $keyword = $request->keyword;
         $page_count = 20;
         $items = Statement::where('title', 'like', '%'.$keyword.'%')
