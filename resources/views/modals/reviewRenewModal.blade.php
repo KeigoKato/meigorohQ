@@ -1,7 +1,7 @@
-@extends('modals.masterModal')
+@extends('modals.masterRenewModal')
 
 @section('modalButtonValue')
-編集・削除
+あばば
 @endsection
 
 @section('modalTitle')

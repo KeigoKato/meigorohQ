@@ -40,10 +40,13 @@
                             <td>{{$review->star}}</td>
                             <td>{{$review->comment}}</td>
                             <td>
-                                <div id="{{$loop->index}}">
-                                @include('modals.reviewRenewModal', ['review' => $review, 'item'=>$item])
-                                </div>
-                                <!-- <button type="button" class="btn" data-toggle="modal" data-target=".bs-example-modal-sm-{{$review->id}}">修正する</button>
+                                <!-- @include('modals.masterModal') -->
+
+
+
+
+
+                                <button type="button" class="btn" data-toggle="modal" data-target=".bs-example-modal-sm-{{$review->id}}">修正する</button>
                                 <div class="modal fade bs-example-modal-sm-{{$review->id}}" tabindex="-1" role="dialog" aria-labelledby="mysmallmodallabel">
                                     <div class="modal-dialog">
                                         <div class="modal-content" style="padding:10px;">
@@ -88,11 +91,13 @@
                                                     <input type="hidden", name="id", value="{{$review->id}}">
                                                     <input type="submit" class="btn btn-danger" value="削除">
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
+
+
+
 
 
                             </td>
