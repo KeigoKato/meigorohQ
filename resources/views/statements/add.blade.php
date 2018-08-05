@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label for="textStatement" class="col-lg-2 control-label">名語録</label>
                         <div class="col-lg-10">
-                            <textarea class="form-control" name="statement" rows="3" id="textStatement" value='{{old("statement")}}'></textarea>
+                            <textarea class="form-control" name="statement" rows="5" id="textStatement" value='{{old("statement")}}'></textarea>
                             <span class="help-block">30文字以内で入力してください。</span>
                         </div>
                     </div>

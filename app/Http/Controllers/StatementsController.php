@@ -110,6 +110,7 @@ class StatementsController extends Controller
     public function create(StatementsCreateRequest $request) {
         $input = new Statement;
         $form = $request->all();
+        \Debugbar::info($form);
         unset($form["_token"]);
         $input->fill($form)->save();
         return redirect('/statements/index');
