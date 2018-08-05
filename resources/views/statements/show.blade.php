@@ -7,7 +7,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="jumbotron" style="padding: 48px 110px;">
                 <h2 style="margin-bottom: 60px;">
-                    {{$item->statement}}
+                    {!! nl2br($item->statement) !!}
                 </h2>
                 <h4 style="text-align: right;">
                     {{$item->title}} : {{$item->who}}
@@ -46,11 +46,6 @@
                             <td>{{$review->comment}}</td>
                             <td>
                                 <!-- @include('modals.masterModal') -->
-
-
-
-
-
                                 <button type="button" class="btn" data-toggle="modal" data-target=".bs-example-modal-sm-{{$review->id}}">修正する</button>
                                 <div class="modal fade bs-example-modal-sm-{{$review->id}}" tabindex="-1" role="dialog" aria-labelledby="mysmallmodallabel">
                                     <div class="modal-dialog">

@@ -32,7 +32,7 @@
                             <td class="text-center overflow" style="line-height: 40px;">{{$item->who}}</td>
                             <td class="overflow" style="line-height: 40px;">
                                 <a href="/statements/show?id={{$item->id}}" style="text-decoration: none">
-                                    {{$item->statement}}
+                                    {{ $item->statement }}
                                 </a>
                             </td>
                             <td class="text-center">{{$item->created_at->format('Y/m/d H:i')}}</td>
