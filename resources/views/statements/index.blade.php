@@ -19,10 +19,10 @@
                     <thead>
                         <tr>
                             <th class="col-md-2 text-center" style="background-color: red;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=title&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=title&order=".$order @endphp>作品タイトル</a></th>
-                            <th class="col-md-1 text-center" style="background-color: orange;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=who&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=who&order=".$order @endphp>発言者</a></th>
-                            <th class="col-md-4 text-center" style="background-color: yellow;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=statement&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=statement&order=".$order @endphp>名語録</a></th>
+                            <th class="col-md-2 text-center" style="background-color: orange;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=who&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=who&order=".$order @endphp>発言者</a></th>
+                            <th class="col-md-6 text-center" style="background-color: yellow;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=statement&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=statement&order=".$order @endphp>名語録</a></th>
                             <th class="col-md-1 text-center" style="background-color: green;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=created_at&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=created_at&order=".$order @endphp>投稿日</a></th>
-                            <th class="col-md-3 text-center" style="background-color: blue;">スター</th>
+                            <th class="col-md-1 text-center" style="background-color: blue;">スター</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,11 +37,7 @@
                             </td>
                             <td class="text-center">{{$item->created_at->format('Y/m/d H:i')}}</td>
                             <td class="text-center" style="line-height: 40px;">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{$stars[$loop->index]}}" aria-valuemin="0" aria-valuemax="{{max($stars)}}" style="width: {{($stars[$loop->index] / max($stars)) * 100}}%; min-width: 1em;">
-                                        {{$stars[$loop->index]}}
-                                    </div>
-                                </div>
+                                {{$stars[$loop->index]}}
                             </td>
                         </tr>
                         @endforeach

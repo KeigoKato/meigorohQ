@@ -47,6 +47,7 @@ class StatementsController extends Controller
      */
     public function search(Request $request) {
         $sort = $request->sort;
+        $stars = array();
         $keyword = $request->keyword;
         $page_count = 20;
         $order = $request->order;
@@ -58,12 +59,17 @@ class StatementsController extends Controller
         $total = $items->total();
         $startCount = ($items->currentPage() - 1) * $page_count + 1;
         $endCount = $startCount + $items->count() - 1;
+        foreach ($items as $item)
+        {
+            $stars[] = $item->reviews->sum('star');
+        }
         $params = [
             'items'      => $items,
             'keyword'    => $keyword,
             'total'      => $total,
             'sort'       => $sort,
             'order'      => $order,
+            'stars'      => $stars,
             'startCount' => $startCount,
             'endCount'   => $endCount,
         ];
