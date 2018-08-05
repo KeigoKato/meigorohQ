@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StatementsCreateRequest;
 use App\Statement;
 
 class StatementsController extends Controller
@@ -14,16 +15,21 @@ class StatementsController extends Controller
      * @return statements/indexビュー
      */
     public function index(Request $request) {
-        $sort = $request->sort;
-        \Debugbar::info($sort);
         $page_count = 20;
-        $items = Statement::orderBy($sort, 'asc')->paginate($page_count);
+        $sort = $request->sort;
+        if ($request->order == 'asc') {
+            $order = 'desc';
+        } else {
+            $order = 'asc';
+        }
+        $items = Statement::orderBy($sort, $order)->paginate($page_count);
         $total = $items->total();
         $startCount = ($items->currentPage() - 1) * $page_count + 1;
         $endCount = $startCount + $items->count() - 1;
         $params = [
             'items'      => $items,
             'sort'       => $sort,
+            'order'      => $order,
             'total'      => $total,
             'startCount' => $startCount,
             'endCount'   => $endCount,
@@ -41,10 +47,15 @@ class StatementsController extends Controller
         $sort = $request->sort;
         $keyword = $request->keyword;
         $page_count = 20;
+        if ($request->order == 'asc') {
+            $order = 'desc';
+        } else {
+            $order = 'asc';
+        }
         $items = Statement::where('title', 'like', '%'.$keyword.'%')
         ->orWhere('who', 'like', '%'.$keyword.'%')
         ->orWhere('statement', 'like', '%'.$keyword.'%')
-        ->orderBy($sort, 'asc')
+        ->orderBy($sort, $order)
         ->paginate(20);
         $total = $items->total();
         $startCount = ($items->currentPage() - 1) * $page_count + 1;
@@ -54,6 +65,7 @@ class StatementsController extends Controller
             'keyword'    => $keyword,
             'total'      => $total,
             'sort'       => $sort,
+            'order'      => $order,
             'startCount' => $startCount,
             'endCount'   => $endCount,
         ];
@@ -91,7 +103,7 @@ class StatementsController extends Controller
      * @param Request $request
      * @return void
      */
-    public function create(Request $request) {
+    public function create(StatementsCreateRequest $request) {
         $input = new Statement;
         $form = $request->all();
         unset($form["_token"]);
