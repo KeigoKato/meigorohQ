@@ -16,17 +16,23 @@ class StatementsController extends Controller
      */
     public function index(Request $request) {
         $page_count = 20;
+        $stars = array();
         $sort = $request->sort;
         $order = $request->order;
         $items = Statement::orderBy($sort, $order)->paginate($page_count);
         $total = $items->total();
         $startCount = ($items->currentPage() - 1) * $page_count + 1;
         $endCount = $startCount + $items->count() - 1;
+        foreach ($items as $item)
+        {
+            $stars[] = $item->reviews->sum('star');
+        }
         $params = [
             'items'      => $items,
             'sort'       => $sort,
             'order'      => $order,
             'total'      => $total,
+            'stars'      => $stars,
             'startCount' => $startCount,
             'endCount'   => $endCount,
         ];
