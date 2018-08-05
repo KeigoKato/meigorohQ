@@ -16,21 +16,23 @@ class StatementsController extends Controller
      */
     public function index(Request $request) {
         $page_count = 20;
+        $stars = array();
         $sort = $request->sort;
-        if ($request->order == 'asc') {
-            $order = 'desc';
-        } else {
-            $order = 'asc';
-        }
+        $order = $request->order;
         $items = Statement::orderBy($sort, $order)->paginate($page_count);
         $total = $items->total();
         $startCount = ($items->currentPage() - 1) * $page_count + 1;
         $endCount = $startCount + $items->count() - 1;
+        foreach ($items as $item)
+        {
+            $stars[] = $item->reviews->sum('star');
+        }
         $params = [
             'items'      => $items,
             'sort'       => $sort,
             'order'      => $order,
             'total'      => $total,
+            'stars'      => $stars,
             'startCount' => $startCount,
             'endCount'   => $endCount,
         ];
@@ -45,13 +47,10 @@ class StatementsController extends Controller
      */
     public function search(Request $request) {
         $sort = $request->sort;
+        $stars = array();
         $keyword = $request->keyword;
         $page_count = 20;
-        if ($request->order == 'asc') {
-            $order = 'desc';
-        } else {
-            $order = 'asc';
-        }
+        $order = $request->order;
         $items = Statement::where('title', 'like', '%'.$keyword.'%')
         ->orWhere('who', 'like', '%'.$keyword.'%')
         ->orWhere('statement', 'like', '%'.$keyword.'%')
@@ -60,12 +59,17 @@ class StatementsController extends Controller
         $total = $items->total();
         $startCount = ($items->currentPage() - 1) * $page_count + 1;
         $endCount = $startCount + $items->count() - 1;
+        foreach ($items as $item)
+        {
+            $stars[] = $item->reviews->sum('star');
+        }
         $params = [
             'items'      => $items,
             'keyword'    => $keyword,
             'total'      => $total,
             'sort'       => $sort,
             'order'      => $order,
+            'stars'      => $stars,
             'startCount' => $startCount,
             'endCount'   => $endCount,
         ];
