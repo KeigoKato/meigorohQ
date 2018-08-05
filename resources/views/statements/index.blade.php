@@ -18,10 +18,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="col-md-2 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=title&keyword=".$keyword."&page=1" : "/statements/index?sort=title" @endphp>作品タイトル</a></th>
-                            <th class="col-md-1 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=who&keyword=".$keyword."&page=1" : "/statements/index?sort=who" @endphp>発言者</a></th>
-                            <th class="col-md-6 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=statement&keyword=".$keyword."&page=1" : "/statements/index?sort=statement" @endphp>名語録</a></th>
-                            <th class="col-md-3 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=created_at&keyword=".$keyword."&page=1" : "/statements/index?sort=created_at" @endphp>投稿日</a></th>
+                            <th class="col-md-2 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=title&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=title&order=".$order @endphp>作品タイトル</a></th>
+                            <th class="col-md-1 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=who&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=who&order=".$order @endphp>発言者</a></th>
+                            <th class="col-md-6 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=statement&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=statement&order=".$order @endphp>名語録</a></th>
+                            <th class="col-md-3 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=created_at&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=created_at&order=".$order @endphp>投稿日</a></th>
                         </tr>
                     </thead>
                     <tbody>

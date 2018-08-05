@@ -18,6 +18,11 @@
                 <h6 style="text-align: right;">
                     レビュー合計: {{$num_comment}}
                 </h6>
+                @if(count($errors))
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+                @endif
                 @include('modals.reviewAddModal')
             </div>
         </div>
