@@ -17,11 +17,7 @@ class StatementsController extends Controller
     public function index(Request $request) {
         $page_count = 20;
         $sort = $request->sort;
-        if ($request->order == 'asc') {
-            $order = 'desc';
-        } else {
-            $order = 'asc';
-        }
+        $order = $request->order;
         $items = Statement::orderBy($sort, $order)->paginate($page_count);
         $total = $items->total();
         $startCount = ($items->currentPage() - 1) * $page_count + 1;
@@ -47,11 +43,7 @@ class StatementsController extends Controller
         $sort = $request->sort;
         $keyword = $request->keyword;
         $page_count = 20;
-        if ($request->order == 'asc') {
-            $order = 'desc';
-        } else {
-            $order = 'asc';
-        }
+        $order = $request->order;
         $items = Statement::where('title', 'like', '%'.$keyword.'%')
         ->orWhere('who', 'like', '%'.$keyword.'%')
         ->orWhere('statement', 'like', '%'.$keyword.'%')

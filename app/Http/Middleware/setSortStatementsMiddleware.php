@@ -16,7 +16,15 @@ class setSortStatementsMiddleware
     public function handle($request, Closure $next)
     {
         if (empty($request->sort)) {
-            $request->merge(['sort'=>'created_at']);
+            $request->merge(['sort' => 'created_at']);
+        }
+
+        if ($request->order == 'asc') {
+            // $order = 'desc';
+            $request->merge(['order' => 'desc']);
+        } else {
+            // $order = 'asc';
+            $request->merge(['order' => 'asc']);
         }
         return $next($request);
     }
