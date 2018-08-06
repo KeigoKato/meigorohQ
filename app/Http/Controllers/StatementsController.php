@@ -113,6 +113,8 @@ class StatementsController extends Controller
         \Debugbar::info($form);
         unset($form["_token"]);
         $input->fill($form)->save();
-        return redirect('/statements/index');
+        // with()はsession変数に一つの変数を加える時に使う
+        // 複数の変数を渡す場合は連想配列にする
+        return redirect('/statements/index')->with('message', '投稿が完了しました');
     }
 }

@@ -26,11 +26,6 @@ table {
     table-layout: fixed;
 }
 
-/* tr.limStrLen {
-    width: 100%;
-    overflow: hidden;
-} */
-
 tr td.overflow {
     overflow: hidden;
     white-space: nowrap;
@@ -39,11 +34,20 @@ tr td.overflow {
 }
 
 
+/* footer */
+footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 100px;
+    color: #99979c;
+    background-color: #2a2730;
+}
 
-/* td.overflow {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
-} */
+footer li {
+    display: inline-block;
+}
+
+footer li a {
+    text-decoration: none;
+    color: #fff;
+}
