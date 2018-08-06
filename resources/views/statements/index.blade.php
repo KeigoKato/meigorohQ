@@ -11,18 +11,19 @@
                 </div>
                 <div class="panel-body">
                     <p>
-                        表のメニューをクリックすると、その順番にソートされます。<br>
-                        行をクリックすると、その名語録のページにジャンプします。
+                        表の列名をクリックすると、辞書順にソートされます。<br>
+                        名語録をクリックすると、その名語録のページにジャンプします。ジャンプした先でスターとコメントを書きましょう！！<br>
+                        ページ最上部のテキスト入力欄を使うと検索もできます。
                     </p>
                 </div>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="col-md-2 text-center" style="background-color: red;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=title&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=title&order=".$order @endphp>作品タイトル</a></th>
-                            <th class="col-md-2 text-center" style="background-color: orange;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=who&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=who&order=".$order @endphp>発言者</a></th>
-                            <th class="col-md-6 text-center" style="background-color: yellow;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=statement&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=statement&order=".$order @endphp>名語録</a></th>
-                            <th class="col-md-1 text-center" style="background-color: green;"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=created_at&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=created_at&order=".$order @endphp>投稿日</a></th>
-                            <th class="col-md-1 text-center" style="background-color: blue;">スター</th>
+                            <th class="col-md-2 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=title&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=title&order=".$order @endphp>作品タイトル</a></th>
+                            <th class="col-md-2 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=who&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=who&order=".$order @endphp>発言者</a></th>
+                            <th class="col-md-6 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=statement&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=statement&order=".$order @endphp>名語録</a></th>
+                            <th class="col-md-1 text-center"><a style="text-decoration: none;" href=@php echo(!empty($keyword)) ? "/statements/search?sort=created_at&order=".$order."&keyword=".$keyword."&page=1" : "/statements/index?sort=created_at&order=".$order @endphp>投稿日</a></th>
+                            <th class="col-md-1 text-center">スター</th>
                         </tr>
                     </thead>
                     <tbody>
