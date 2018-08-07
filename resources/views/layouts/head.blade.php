@@ -12,4 +12,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <!-- 共通のcss -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}", type="text/css">
+    <!-- 共通のjsファイル -->
+    <script type="text/javascript" src="{{ asset('js/fixedFooter.js') }}"></script>
 </head>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="border-radius: 0px;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">名語郎Q</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -30,3 +30,14 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          @if(session()->has('message'))
+          <div class="alert alert-info mb-3">
+              {{session('message')}}
+          </div>
+          @endif
+      </div>
+  </div>
+</div>

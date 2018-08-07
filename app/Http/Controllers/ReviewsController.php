@@ -16,10 +16,11 @@ class ReviewsController extends Controller
      */
     public function create(ReviewsEditRequest $request) {
         $input = new Review;
+        $statement_id = $request->statement_id;
         $form = $request->all();
         unset($form["_token"]);
         $input->fill($form)->save();
-        return redirect('/statements/index');
+        return redirect('/statements/show?id='.$statement_id)->with('message', 'レビューを投稿しました');
     }
 
     /**
@@ -34,7 +35,7 @@ class ReviewsController extends Controller
         $review_id = $request->id;
         unset($form["_token"]);
         $review = Review::find($review_id)->fill($form)->save();
-        return redirect('/statements/show?id='.$statement_id);
+        return redirect('/statements/show?id='.$statement_id)->with('message', 'レビューを更新しました');
     }
 
     /**
@@ -47,6 +48,6 @@ class ReviewsController extends Controller
         $review_id = $request->id;
         $statement_id = $request->statement_id;
         $review = Review::find($review_id)->delete();
-        return redirect('/statements/show?id='.$statement_id);
+        return redirect('/statements/show?id='.$statement_id)->with('message', 'レビューを削除しました');
     }
 }
