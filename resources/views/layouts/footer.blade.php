@@ -1,4 +1,4 @@
-<footer class="bs-docs-footer">
+<footer class="bs-docs-footer" id="footer">
     <div class="container">
         <ul class="bs-docs-footer-links">
             <li>
