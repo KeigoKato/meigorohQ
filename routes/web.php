@@ -14,3 +14,6 @@ Route::post('statements/add', 'StatementsController@create');
 Route::post('/reviews/add', 'ReviewsController@create');
 Route::post('/reviews/update', 'ReviewsController@update');
 Route::post('/reviews/delete', 'ReviewsController@delete');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
