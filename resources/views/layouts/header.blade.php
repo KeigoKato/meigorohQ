@@ -24,8 +24,34 @@
         <button type="submit" class="btn btn-default">検索</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">ログアウト</a></li>
-        <li><a href="#">サインアップ</a></li>
+          @guest
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">ログアウト</a>
+              {{-- baldeでアンダーバーをふたつ続けて書くと何になるの？ --}}
+          </li>
+        <!-- <li><a href="/logout">ログアウト</a></li> -->
+          @else
+          <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  ようこそ {{ Auth::user()->name }} さん<span class="caret"></span>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+              </div>
+          </li>
+          @endguest
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
