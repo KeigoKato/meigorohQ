@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label for="inputComment" class="col-lg-2 control-label">コメント</label>
                 <div class="col-lg-10">
-                    <input type="text" name="comment" class="form-control" id="inputComment" placeholder="コメント(15文字以内)" value='{{old("comment")}}'>
+                    <input type="text" name="comment" class="form-control" id="inputComment" placeholder="コメント(20文字以内)" value='{{old("comment")}}'>
                 </div>
             </div>
             <div class="modal-footer">

@@ -20,7 +20,7 @@
                 </h6>
                 @if(count($errors))
                 @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
+                <div class="alert alert-danger" role="alert">{{$error}}</div>
                 @endforeach
                 @endif
                 @include('modals.reviewAddModal')
@@ -28,25 +28,24 @@
         </div>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Panel heading</div>
+                <div class="panel-heading">レビュー 一覧 （最近の10件を表示）</div>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>レビュワー</th>
-                            <th>スター</th>
-                            <th>コメント</th>
-                            <th>編集・削除</th>
+                            <th class="col-md-3 text-center">レビュワー</th>
+                            <th class="col-md-5 text-center">コメント</th>
+                            <th class="col-md-2 text-center">スター</th>
+                            <th class="col-md-2 text-center">編集・削除</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($item->reviews as $review)
+                        @foreach($reviews as $review)
                         <tr>
-                            <td>名無し</td>
-                            <td>{{$review->star}}</td>
+                            <td class="text-center">名無し</td>
                             <td>{{$review->comment}}</td>
-                            <td>
-                                <!-- @include('modals.masterModal') -->
-                                <button type="button" class="btn" data-toggle="modal" data-target=".bs-example-modal-sm-{{$review->id}}">修正する</button>
+                            <td class="text-center">{{$review->star}}</td>
+                            <td class="text-center">
+                                <span style="cursor: pointer;" data-toggle="modal" data-target=".bs-example-modal-sm-{{$review->id}}">修正する</span>
                                 <div class="modal fade bs-example-modal-sm-{{$review->id}}" tabindex="-1" role="dialog" aria-labelledby="mysmallmodallabel">
                                     <div class="modal-dialog">
                                         <div class="modal-content" style="padding:10px;">
@@ -55,7 +54,6 @@
                                                 <h4 class="modal-title">レビューの修正または削除</h4>
                                             </div>
                                             <div class="modal-body">
-
                                                 <form class="form-horizontal" action="/reviews/update" method="post">
                                                     {{csrf_field()}}
                                                     <fieldset>
@@ -74,7 +72,7 @@
                                                         <div class="form-group">
                                                             <label for="inputComment" class="col-lg-2 control-label">コメント</label>
                                                             <div class="col-lg-10">
-                                                                <input type="text" name="comment" class="form-control" id="inputComment" placeholder="コメント(10文字以内)" value="{{$review->comment}}">
+                                                                <input type="text" name="comment" class="form-control" id="inputComment" placeholder="コメント(20文字以内)" value="{{$review->comment}}">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -95,11 +93,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
                             </td>
                         </tr>
                         @endforeach
