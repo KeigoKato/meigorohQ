@@ -20,7 +20,7 @@
                 </h6>
                 @if(count($errors))
                 @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
+                <div class="alert alert-danger" role="alert">{{$error}}</div>
                 @endforeach
                 @endif
                 @include('modals.reviewAddModal')
