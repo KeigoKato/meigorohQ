@@ -85,7 +85,8 @@ class StatementsController extends Controller
     public function show(Request $request) {
         $id = $request->id;
         $item = Statement::find($id);
-        $reviews = $item->reviews->take(10)->sortByDesc('created_at');
+        $reviews = $item->reviews->sortByDesc('created_at')->take(10);
+        \Debugbar::info($reviews);
         $num_star = $item->reviews->sum('star');
         $num_comment = count($item->reviews);
         $params = ['item' => $item, 'reviews' => $reviews, 'num_star' => $num_star, 'num_comment' => $num_comment];
