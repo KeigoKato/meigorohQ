@@ -24,7 +24,7 @@ class ReviewsEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'comment' => 'required|max:15',
+            'comment' => 'max:20',
         ];
     }
 
@@ -36,8 +36,7 @@ class ReviewsEditRequest extends FormRequest
     public function messages()
     {
         return [
-            'comment.required' => 'タイトルは必須です',
-            'comment.max' => '15文字以内で入力してください',
+            'comment.max' => '20文字以内で入力してください',
         ];
     }
 }
