@@ -39,7 +39,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($item->reviews as $review)
+                        @foreach($reviews as $review)
                         <tr>
                             <td>名無し</td>
                             <td>{{$review->star}}</td>
